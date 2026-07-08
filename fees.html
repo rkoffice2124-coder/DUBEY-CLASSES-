@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fee Collection - Dubey Classes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>DUBEY CLASSES</h1>
+<p>Fee Collection</p>
+</header>
+
+<section>
+
+<h2>Collect Monthly Fee</h2>
+
+<form id="feeForm">
+
+<input type="text" id="studentName" placeholder="Student Name" required>
+
+<select id="studentClass" required>
+<option value="">Select Class</option>
+<option value="6">Class VI</option>
+<option value="7">Class VII</option>
+<option value="8">Class VIII</option>
+<option value="9">Class IX</option>
+<option value="10">Class X</option>
+</select>
+
+<input type="month" id="feeMonth" required>
+
+<input type="number" id="amount" placeholder="Fee Amount" required>
+
+<button type="submit">Save Fee</button>
+
+</form>
+
+</section>
+
+<script type="module" src="fees.js"></script>
+
+</body>
+</html>
