@@ -3,15 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fee Collection - Dubey Classes</title>
+
+<title>Fee Collection - DUBEY CLASSES</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<header>
+<header class="header">
+
+<img src="logo.png" alt="DUBEY CLASSES Logo" class="logo">
+
+<div>
 <h1>DUBEY CLASSES</h1>
 <p>Fee Collection</p>
+</div>
+
 </header>
 
 <section>
@@ -20,22 +29,49 @@
 
 <form id="feeForm">
 
-<input type="text" id="studentName" placeholder="Student Name" required>
-<input type="text" id="father" placeholder="Father Name" required>
+<input
+type="text"
+id="studentName"
+placeholder="Student Name"
+required>
+
+<input
+type="text"
+id="father"
+placeholder="Father Name"
+required>
+
 <select id="studentClass" required>
+
 <option value="">Select Class</option>
+
 <option value="6">Class VI</option>
+
 <option value="7">Class VII</option>
+
 <option value="8">Class VIII</option>
+
 <option value="9">Class IX</option>
+
 <option value="10">Class X</option>
+
 </select>
 
-<input type="month" id="feeMonth" required>
+<input
+type="month"
+id="feeMonth"
+required>
 
-<input type="number" id="amount" placeholder="Fee Amount" required>
+<input
+type="number"
+id="amount"
+placeholder="Fee Amount"
+readonly
+required>
 
-<button type="submit">Save Fee</button>
+<button type="submit">
+💰 Save Fee & Print Receipt
+</button>
 
 </form>
 
