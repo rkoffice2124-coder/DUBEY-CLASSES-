@@ -44,7 +44,14 @@ const form = document.getElementById("feeForm");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  await addDoc(collection(db, "fees"), {
+  const docRef = await addDoc(collection(db, "fees"), {
+    studentName: document.getElementById("studentName").value,
+    father: document.getElementById("father").value,
+    studentClass: classSelect.value,
+    month: document.getElementById("feeMonth").value,
+    amount: Number(amountInput.value),
+    paidOn: new Date()
+});
     studentName: document.getElementById("studentName").value,
     studentClass: classSelect.value,
     month: document.getElementById("feeMonth").value,
