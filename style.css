@@ -75,3 +75,29 @@ textarea{
 height:90px;
 resize:none;
 }
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#0d47a1;
+    color:white;
+    padding:20px;
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:white;
+}
+
+.header h1{
+    margin:0;
+    font-size:38px;
+}
+
+.header p{
+    margin:5px 0 0;
+    font-size:20px;
+}
