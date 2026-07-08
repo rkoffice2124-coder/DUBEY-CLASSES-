@@ -19,16 +19,18 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+// Check Login
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "login.html";
   }
 });
 
+const form = document.getElementById("feeForm");
 const classSelect = document.getElementById("studentClass");
 const amountInput = document.getElementById("amount");
 
-// Automatically set fee amount
+// Auto Fee Amount
 classSelect.addEventListener("change", () => {
   const cls = parseInt(classSelect.value);
 
@@ -36,29 +38,32 @@ classSelect.addEventListener("change", () => {
     amountInput.value = 2000;
   } else if (cls >= 9 && cls <= 10) {
     amountInput.value = 2500;
+  } else {
+    amountInput.value = "";
   }
 });
 
-const form = document.getElementById("feeForm");
-
+// Save Fee
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const docRef = await addDoc(collection(db, "fees"), {
-    studentName: document.getElementById("studentName").value,
-    father: document.getElementById("father").value,
-    studentClass: classSelect.value,
-    month: document.getElementById("feeMonth").value,
-    amount: Number(amountInput.value),
-    paidOn: new Date()
-});
-    studentName: document.getElementById("studentName").value,
-    studentClass: classSelect.value,
-    month: document.getElementById("feeMonth").value,
-    amount: Number(amountInput.value),
-    paidOn: new Date()
-  });
+  try {
 
-  alert("Fee saved successfully!");
-  form.reset();
+    const docRef = await addDoc(collection(db, "fees"), {
+      studentName: document.getElementById("studentName").value,
+      father: document.getElementById("father").value,
+      studentClass: classSelect.value,
+      month: document.getElementById("feeMonth").value,
+      amount: Number(amountInput.value),
+      paidOn: new Date()
+    });
+
+    alert("Fee saved successfully!");
+
+    window.location.href = "receipt.html?id=" + docRef.id;
+
+  } catch (error) {
+    alert("Error: " + error.message);
+  }
 });
+  
