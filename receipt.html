@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fee Receipt</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.receipt{
+    max-width:700px;
+    margin:20px auto;
+    background:white;
+    padding:25px;
+    border:2px solid #0d47a1;
+    border-radius:10px;
+}
+
+.receipt-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    border-bottom:2px solid #0d47a1;
+    padding-bottom:15px;
+}
+
+.receipt-header img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+}
+
+.receipt-title{
+    flex:1;
+}
+
+.receipt-title h1{
+    color:#0d47a1;
+}
+
+.receipt table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+
+.receipt td{
+    padding:12px;
+    border:1px solid #ddd;
+}
+
+.printBtn{
+    margin-top:25px;
+}
+
+@media print{
+.printBtn{
+display:none;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="receipt">
+
+<div class="receipt-header">
+
+<img src="logo.png">
+
+<div class="receipt-title">
+
+<h1>DUBEY CLASSES</h1>
+
+<p>Anand Marg Colony, DVC, Aliganj, Bhagalpur</p>
+
+<p>📞 7503322363</p>
+
+</div>
+
+</div>
+
+<h2 style="text-align:center;margin-top:20px;">
+FEE RECEIPT
+</h2>
+
+<table>
+
+<tr>
+<td><b>Receipt No.</b></td>
+<td id="receiptNo">DC-2026-0001</td>
+</tr>
+
+<tr>
+<td><b>Student Name</b></td>
+<td id="studentName"></td>
+</tr>
+
+<tr>
+<td><b>Father Name</b></td>
+<td id="fatherName"></td>
+</tr>
+
+<tr>
+<td><b>Class</b></td>
+<td id="studentClass"></td>
+</tr>
+
+<tr>
+<td><b>Fee Month</b></td>
+<td id="feeMonth"></td>
+</tr>
+
+<tr>
+<td><b>Amount Paid</b></td>
+<td id="amount"></td>
+</tr>
+
+<tr>
+<td><b>Date</b></td>
+<td id="paidDate"></td>
+</tr>
+
+</table>
+
+<div style="margin-top:40px;display:flex;justify-content:space-between;">
+
+<div>
+<b>Status:</b>
+
+<span style="color:green;">
+PAID
+</span>
+
+</div>
+
+<div>
+
+____________________
+
+<br>
+
+Authorized Signature
+
+</div>
+
+</div>
+
+<button class="printBtn" onclick="window.print()">
+
+🖨️ Print Receipt
+
+</button>
+
+</div>
+
+<script type="module" src="receipt.js"></script>
+
+</body>
+</html>
