@@ -5,6 +5,7 @@ import {
   collection,
   getDocs
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCoeRFMHkzxXtF6_Uqnv-c6xLWtA_8UzPs",
   authDomain: "dubey-classes-87996.firebaseapp.com",
@@ -18,21 +19,33 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+let students = [];
+
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "login.html";
+  } else {
+    loadStudents();
   }
 });
 
 async function loadStudents() {
+  const snapshot = await getDocs(collection(db, "admissions"));
+
+  students = [];
+
+  snapshot.forEach((doc) => {
+    students.push(doc.data());
+  });
+
+  displayStudents(students);
+}
+
+function displayStudents(list) {
   const table = document.getElementById("studentTable");
   table.innerHTML = "";
 
-  const snapshot = await getDocs(collection(db, "admissions"));
-
-  snapshot.forEach((doc) => {
-    const s = doc.data();
-
+  list.forEach((s) => {
     table.innerHTML += `
       <tr>
         <td>${s.name}</td>
@@ -44,4 +57,17 @@ async function loadStudents() {
   });
 }
 
-loadStudents();
+const searchBox = document.getElementById("searchBox");
+
+searchBox.addEventListener("input", () => {
+  const text = searchBox.value.toLowerCase();
+
+  const filtered = students.filter((s) =>
+    (s.name || "").toLowerCase().includes(text) ||
+    (s.father || "").toLowerCase().includes(text) ||
+    (s.className || "").toLowerCase().includes(text) ||
+    (s.mobile || "").toLowerCase().includes(text)
+  );
+
+  displayStudents(filtered);
+});
