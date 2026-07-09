@@ -127,6 +127,17 @@ DUBEY CLASSES
       }
 
       </td>
+      <td>
+  <button onclick="window.location.href='edit-student.html?id=${s.id}'">
+    ✏️ Edit
+  </button>
+</td>
+
+<td>
+  <button onclick="deleteStudent('${s.id}')">
+    🗑️ Delete
+  </button>
+</td>
 
     </tr>
     `;
