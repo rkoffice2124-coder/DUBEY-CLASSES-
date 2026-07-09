@@ -38,7 +38,9 @@ async function loadDashboard() {
 
   // Total Students
   const studentSnapshot = await getDocs(collection(db, "admissions"));
-  document.getElementById("totalStudents").textContent = studentSnapshot.size;
+  const totalStudents = studentSnapshot.size;
+
+  document.getElementById("totalStudents").textContent = totalStudents;
 
   // Fee Collection
   const feeSnapshot = await getDocs(collection(db, "fees"));
@@ -46,7 +48,9 @@ async function loadDashboard() {
   let totalFee = 0;
   let monthlyFee = 0;
 
-  const currentMonth = new Date().toISOString().slice(0,7);
+  const currentMonth = new Date().toISOString().slice(0, 7);
+
+  const paidStudents = new Set();
 
   feeSnapshot.forEach((doc) => {
 
@@ -54,8 +58,12 @@ async function loadDashboard() {
 
     totalFee += fee.amount || 0;
 
-    if(fee.month === currentMonth){
+    if (fee.month === currentMonth) {
       monthlyFee += fee.amount || 0;
+
+      if (fee.studentName) {
+        paidStudents.add(fee.studentName.trim().toLowerCase());
+      }
     }
 
   });
@@ -63,27 +71,16 @@ async function loadDashboard() {
   document.getElementById("totalFees").textContent = "₹" + totalFee;
   document.getElementById("monthlyFees").textContent = "₹" + monthlyFee;
 
+  const pendingStudents = totalStudents - paidStudents.size;
+
+  document.getElementById("pendingStudents").textContent =
+    pendingStudents < 0 ? 0 : pendingStudents;
+
 }
 
 const logoutBtn = document.getElementById("logoutBtn");
 
 logoutBtn.addEventListener("click", async () => {
-
-  try {
-
-    await signOut(auth);
-
-    alert("Logged out successfully!");
-
-    window.location.href = "login.html";
-
-  } catch (error) {
-
-    alert("Logout failed: " + error.message);
-
-  }
-
-});logoutBtn.addEventListener("click", async () => {
 
   try {
 
