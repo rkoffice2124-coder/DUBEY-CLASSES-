@@ -42,19 +42,35 @@ async function loadStudents() {
 }
 
 function displayStudents(list) {
+
   const table = document.getElementById("studentTable");
   table.innerHTML = "";
 
   list.forEach((s) => {
+
+    const message = encodeURIComponent(
+      "Dear Parent,\n\nThis is a reminder that the fee for " +
+      (s.name || "your ward") +
+      " is pending for this month.\n\nKindly pay the fee at your earliest convenience.\n\nThank you.\nDUBEY CLASSES"
+    );
+
+    const phone = "91" + (s.mobile || "").replace(/\D/g, "");
+
     table.innerHTML += `
       <tr>
         <td>${s.name}</td>
         <td>${s.father}</td>
         <td>${s.className}</td>
         <td>${s.mobile}</td>
+        <td>
+          <a href="https://wa.me/${phone}?text=${message}" target="_blank">
+            <button>📱 WhatsApp</button>
+          </a>
+        </td>
       </tr>
     `;
   });
+
 }
 
 const searchBox = document.getElementById("searchBox");
