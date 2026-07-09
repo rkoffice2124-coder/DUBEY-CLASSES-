@@ -3,7 +3,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/fireba
 import {
   getFirestore,
   collection,
-  getDocs
+  getDocs,
+  deleteDoc,
+  doc
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -162,3 +164,24 @@ searchBox.addEventListener("input", () => {
   displayStudents(filtered);
 
 });
+window.deleteStudent = async function(id) {
+
+  const ok = confirm("Are you sure you want to delete this student?");
+
+  if (!ok) return;
+
+  try {
+
+    await deleteDoc(doc(db, "admissions", id));
+
+    alert("✅ Student deleted successfully.");
+
+    loadData();
+
+  } catch (error) {
+
+    alert("Error: " + error.message);
+
+  }
+
+};
