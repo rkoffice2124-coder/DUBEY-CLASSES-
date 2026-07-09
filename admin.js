@@ -40,26 +40,50 @@ async function loadDashboard() {
   const studentSnapshot = await getDocs(collection(db, "admissions"));
   document.getElementById("totalStudents").textContent = studentSnapshot.size;
 
-  // Total Fee Collected
+  // Fee Collection
   const feeSnapshot = await getDocs(collection(db, "fees"));
 
   let totalFee = 0;
+  let monthlyFee = 0;
+
+  const currentMonth = new Date().toISOString().slice(0,7);
 
   feeSnapshot.forEach((doc) => {
-    totalFee += doc.data().amount || 0;
+
+    const fee = doc.data();
+
+    totalFee += fee.amount || 0;
+
+    if(fee.month === currentMonth){
+      monthlyFee += fee.amount || 0;
+    }
+
   });
 
-  const feeElement = document.getElementById("totalFees");
-
-  if (feeElement) {
-    feeElement.textContent = "₹" + totalFee;
-  }
+  document.getElementById("totalFees").textContent = "₹" + totalFee;
+  document.getElementById("monthlyFees").textContent = "₹" + monthlyFee;
 
 }
 
 const logoutBtn = document.getElementById("logoutBtn");
 
 logoutBtn.addEventListener("click", async () => {
+
+  try {
+
+    await signOut(auth);
+
+    alert("Logged out successfully!");
+
+    window.location.href = "login.html";
+
+  } catch (error) {
+
+    alert("Logout failed: " + error.message);
+
+  }
+
+});logoutBtn.addEventListener("click", async () => {
 
   try {
 
