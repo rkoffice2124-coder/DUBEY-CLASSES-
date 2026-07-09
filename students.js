@@ -20,25 +20,50 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 let students = [];
+let paidStudents = new Set();
 
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "login.html";
   } else {
-    loadStudents();
+    loadData();
   }
 });
 
-async function loadStudents() {
-  const snapshot = await getDocs(collection(db, "admissions"));
+async function loadData() {
+
+  // Load Students
+  const studentSnapshot = await getDocs(collection(db, "admissions"));
 
   students = [];
 
-  snapshot.forEach((doc) => {
+  studentSnapshot.forEach((doc) => {
     students.push(doc.data());
   });
 
+  // Load Fees
+  const feeSnapshot = await getDocs(collection(db, "fees"));
+
+  paidStudents.clear();
+
+  const currentMonth = new Date().toISOString().slice(0,7);
+
+  feeSnapshot.forEach((doc) => {
+
+    const fee = doc.data();
+
+    if (fee.month === currentMonth && fee.studentName) {
+
+      paidStudents.add(
+        fee.studentName.trim().toLowerCase()
+      );
+
+    }
+
+  });
+
   displayStudents(students);
+
 }
 
 function displayStudents(list) {
@@ -48,27 +73,61 @@ function displayStudents(list) {
 
   list.forEach((s) => {
 
+    const studentName = (s.name || "").trim().toLowerCase();
+
+    const isPaid = paidStudents.has(studentName);
+
+    const phone = "91" + (s.mobile || "").replace(/\D/g,"");
+
     const message = encodeURIComponent(
-      "Dear Parent,\n\nThis is a reminder that the fee for " +
-      (s.name || "your ward") +
-      " is pending for this month.\n\nKindly pay the fee at your earliest convenience.\n\nThank you.\nDUBEY CLASSES"
+`Dear Parent,
+
+This is a gentle reminder that the tuition fee of ${s.name} for this month is still pending.
+
+Kindly pay the fee at your earliest convenience.
+
+Thank you.
+
+DUBEY CLASSES
+📞 7503322363`
     );
 
-    const phone = "91" + (s.mobile || "").replace(/\D/g, "");
-
     table.innerHTML += `
-      <tr>
-        <td>${s.name}</td>
-        <td>${s.father}</td>
-        <td>${s.className}</td>
-        <td>${s.mobile}</td>
-        <td>
-          <a href="https://wa.me/${phone}?text=${message}" target="_blank">
-            <button>📱 WhatsApp</button>
-          </a>
-        </td>
-      </tr>
+    <tr>
+
+      <td>${s.name}</td>
+
+      <td>${s.father}</td>
+
+      <td>${s.className}</td>
+
+      <td>${s.mobile}</td>
+
+      <td>
+
+      ${
+        isPaid
+        ? "—"
+        : `<a href="https://wa.me/${phone}?text=${message}" target="_blank">
+             <button>📱 WhatsApp</button>
+           </a>`
+      }
+
+      </td>
+
+      <td>
+
+      ${
+        isPaid
+        ? "<span style='color:green;font-weight:bold'>🟢 Paid</span>"
+        : "<span style='color:red;font-weight:bold'>🔴 Pending</span>"
+      }
+
+      </td>
+
+    </tr>
     `;
+
   });
 
 }
@@ -76,6 +135,7 @@ function displayStudents(list) {
 const searchBox = document.getElementById("searchBox");
 
 searchBox.addEventListener("input", () => {
+
   const text = searchBox.value.toLowerCase();
 
   const filtered = students.filter((s) =>
@@ -86,4 +146,5 @@ searchBox.addEventListener("input", () => {
   );
 
   displayStudents(filtered);
+
 });
