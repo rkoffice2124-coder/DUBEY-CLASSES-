@@ -38,8 +38,11 @@ async function loadData() {
   students = [];
 
   studentSnapshot.forEach((doc) => {
-    students.push(doc.data());
+  students.push({
+    id: doc.id,
+    ...doc.data()
   });
+});
 
   // Load Fees
   const feeSnapshot = await getDocs(collection(db, "fees"));
