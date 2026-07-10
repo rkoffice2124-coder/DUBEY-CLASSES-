@@ -66,4 +66,15 @@ form.addEventListener("submit", async (e) => {
     alert("Error: " + error.message);
   }
 });
+const receiptNo = "DC-" + Date.now();
+
+const docRef = await addDoc(collection(db, "fees"), {
+  receiptNo: receiptNo,
+  studentName: document.getElementById("studentName").value,
+  father: document.getElementById("father").value,
+  studentClass: classSelect.value,
+  month: document.getElementById("feeMonth").value,
+  amount: Number(amountInput.value),
+  paidOn: new Date()
+});
   
