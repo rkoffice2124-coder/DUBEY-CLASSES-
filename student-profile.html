@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Profile</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="admin-header">
+
+<img src="logo.png" class="logo">
+
+<div class="title">
+<h1>DUBEY CLASSES</h1>
+<p>Student Profile</p>
+</div>
+
+</header>
+
+<section>
+
+<div class="card">
+
+<h2 id="studentName">Student Name</h2>
+
+<p><strong>Father :</strong> <span id="fatherName"></span></p>
+
+<p><strong>Class :</strong> <span id="studentClass"></span></p>
+
+<p><strong>Mobile :</strong> <span id="mobile"></span></p>
+
+<p><strong>Address :</strong> <span id="address"></span></p>
+
+<p><strong>Admission Date :</strong> <span id="admissionDate"></span></p>
+
+</div>
+
+<div class="card">
+
+<h2>Fee Summary</h2>
+
+<p><strong>Total Fees Paid :</strong>
+₹<span id="totalPaid">0</span></p>
+
+<p><strong>Last Payment :</strong>
+<span id="lastPayment">Not Available</span></p>
+
+<p><strong>Status :</strong>
+<span id="status">Pending</span></p>
+
+</div>
+<div class="card">
+
+<button onclick="window.print()">
+🖨️ Print Profile
+</button>
+
+<button id="whatsappBtn">
+📱 WhatsApp Parent
+</button>
+
+<button id="editBtn">
+✏️ Edit Student
+</button>
+
+<button id="deleteBtn">
+🗑️ Delete Student
+</button>
+
+</div>
+
+<div class="card">
+
+<button onclick="history.back()">
+⬅ Back
+</button>
+
+</div>
+
+</section>
+
+<script type="module" src="student-profile.js"></script>
+
+</body>
+
+</html>
