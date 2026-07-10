@@ -100,7 +100,12 @@ DUBEY CLASSES
     table.innerHTML += `
     <tr>
 
-      <td>${s.name}</td>
+      <td>
+  <a href="student-profile.html?id=${s.id}"
+     style="text-decoration:none;color:#0d47a1;font-weight:bold;">
+     ${s.name}
+  </a>
+</td>
 
       <td>${s.father}</td>
 
