@@ -17,24 +17,40 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Get document ID from URL
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 if (id) {
+
   const snap = await getDoc(doc(db, "fees", id));
 
-  if (snap.exists()) {
-    const data = snap.data();
-
-    document.getElementById("studentName").textContent = data.studentName || "";
-    document.getElementById("fatherName").textContent = data.father || "";
-    document.getElementById("studentClass").textContent = data.studentClass || "";
-    document.getElementById("feeMonth").textContent = data.month || "";
-    document.getElementById("amount").textContent = "₹" + data.amount;
-    document.getElementById("paidDate").textContent =
-      data.paidOn?.toDate().toLocaleDateString() || "";
-  } else {
+  if (!snap.exists()) {
     alert("Receipt not found.");
+    throw new Error("Receipt not found.");
   }
+
+  const data = snap.data();
+
+  // Receipt Number
+  document.getElementById("receiptNo").textContent =
+    "DC-" + id.substring(0, 8).toUpperCase();
+
+  document.getElementById("studentName").textContent =
+    data.studentName || "";
+
+  document.getElementById("fatherName").textContent =
+    data.father || "";
+
+  document.getElementById("studentClass").textContent =
+    data.studentClass || "";
+
+  document.getElementById("feeMonth").textContent =
+    data.month || "";
+
+  document.getElementById("amount").textContent =
+    "₹" + (data.amount || 0);
+
+  document.getElementById("paidDate").textContent =
+    data.paidOn?.toDate().toLocaleDateString("en-IN") || "";
+
 }
