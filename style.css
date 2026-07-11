@@ -1,627 +1,80 @@
-/* ==========================
+/* =====================================
    DUBEY CLASSES
-   Professional Style Sheet
-========================== */
+   Professional Website Style
+===================================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#f5f7fb;
+    background:#f4f7fc;
     color:#333;
 }
 
-/* ===== Home Header ===== */
+/* Banner */
 
-header{
-    background:#0d47a1;
-    color:white;
-    text-align:center;
-    padding:25px 20px;
+.hero-banner{
+    width:100%;
+    overflow:hidden;
 }
 
-header h1{
-    font-size:32px;
+.hero-banner img{
+    width:100%;
+    display:block;
 }
 
-header p{
-    margin-top:8px;
-    font-size:18px;
-}
-
-/* ===== Admin Header ===== */
-
-.admin-header{
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#ffffff;
-    padding:20px;
-    min-height:110px;
-    border-bottom:4px solid #0d47a1;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
-
-.admin-header .logo{
-    position:absolute;
-    left:20px;
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid #0d47a1;
-    background:#fff;
-}
-
-.admin-header .title{
-    text-align:center;
-}
-
-.admin-header .title h1{
-    margin:0;
-    font-size:40px;
-    font-weight:900;
-    color:#ff0000;
-    letter-spacing:2px;
-}
-
-.admin-header .title p{
-    margin-top:6px;
-    font-size:18px;
-    color:#0d47a1;
-    font-weight:bold;
-}
-
-@media (max-width:600px){
-
-.admin-header{
-    flex-direction:column;
-    padding-top:110px;
-}
-
-.admin-header .logo{
-    position:absolute;
-    top:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:70px;
-    height:70px;
-}
-
-.admin-header .title h1{
-    font-size:30px;
-}
-
-.admin-header .title p{
-    font-size:16px;
-}
-
-}
-
-/* ===== Hero ===== */
+/* Hero Section */
 
 .hero{
-    text-align:center;
-    padding:30px 20px;
-}
-
-.hero h2{
-    color:#0d47a1;
-    margin-bottom:10px;
-    font-size:30px;
-}
-
-.hero p{
-    font-size:18px;
-    margin:8px 0;
-}
-
-/* ===== Sections ===== */
-
-section{
     background:white;
-    margin:20px;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
-
-section h2{
-    color:#0d47a1;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-/* ===== Cards ===== */
-
-.card{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    margin:15px 0;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
-    text-align:center;
-}
-
-/* ===== Forms ===== */
-
-input,
-textarea,
-select{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:16px;
-}
-
-textarea{
-    resize:none;
-    height:90px;
-}
-
-/* ===== Search Box ===== */
-
-#searchBox{
-    margin-bottom:15px;
-}
-
-/* ===== Buttons ===== */
-
-button{
-    width:90%;
-    max-width:320px;
-    display:block;
-    margin:10px auto;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    background:#0d47a1;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    background:#1565c0;
-    transform:scale(1.03);
-}
-
-/* ===== Tables ===== */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
-}
-
-th{
-    background:#0d47a1;
-    color:white;
-    padding:12px;
-}
-
-td{
-    padding:10px;
-    border:1px solid #ddd;
-    text-align:center;
-}
-
-/* ===== Receipt ===== */
-
-.receipt{
-    max-width:700px;
-    margin:20px auto;
-    background:white;
-    padding:25px;
-    border:2px solid #0d47a1;
-    border-radius:10px;
-}
-
-.receipt-header{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    border-bottom:2px solid #0d47a1;
-    padding-bottom:15px;
-}
-
-.receipt-header img{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-}
-
-.receipt-title{
-    flex:1;
-}
-
-.printBtn{
-    margin-top:25px;
-}
-
-@media print{
-
-.printBtn{
-display:none;
-}
-
-body{
-background:white;
-}
-
-}
-
-/* ===== Mobile ===== */
-
-@media(max-width:600px){
-
-.admin-header{
-flex-direction:column;
-text-align:center;
-}
-
-.logo{
-width:70px;
-height:70px;
-}
-
-.title h1{
-font-size:28px;
-}
-/* ==========================
-   DUBEY CLASSES
-   Professional Style Sheet
-========================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#f5f7fb;
-    color:#333;
-}
-
-/* ===== Home Header ===== */
-
-header{
-    background:#0d47a1;
-    color:white;
-    text-align:center;
-    padding:25px 20px;
-}
-
-header h1{
-    font-size:32px;
-}
-
-header p{
-    margin-top:8px;
-    font-size:18px;
-}
-
-/* ===== Admin Header ===== */
-
-.admin-header{
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#ffffff;
-    padding:20px;
-    min-height:100px;
-    border-bottom:4px solid #0d47a1;
-    box-shadow:0 2px 10px rgba(0,0,0,.10);
-}
-
-.admin-header .logo{
-    position:absolute;
-    left:20px;
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    object-fit:cover;
-    border:2px solid #0d47a1;
-    background:#fff;
-}
-
-.admin-header .title{
-    text-align:center;
-}
-
-.admin-header .title h1{
-    margin:0;
-    font-size:36px;
-    font-weight:900;
-    color:#ff0000;
-    letter-spacing:2px;
-}
-
-.admin-header .title p{
-    margin-top:6px;
-    font-size:18px;
-    color:#0d47a1;
-    font-weight:bold;
-}
-
-/* ===== Hero ===== */
-
-.hero{
-    text-align:center;
-    padding:30px 20px;
-}
-
-.hero h2{
-    color:#0d47a1;
-    margin-bottom:10px;
-    font-size:30px;
-}
-
-.hero p{
-    font-size:18px;
-    margin:8px 0;
-}
-
-/* ===== Sections ===== */
-
-section{
-    background:white;
-    margin:20px;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
-
-section h2{
-    color:#0d47a1;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-/* ===== Cards ===== */
-
-.card{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    margin:15px 0;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
-    text-align:center;
-}
-
-/* ===== Forms ===== */
-
-input,
-textarea,
-select{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:16px;
-}
-
-textarea{
-    resize:none;
-    height:90px;
-}
-
-/* ===== Search Box ===== */
-
-#searchBox{
-    margin-bottom:15px;
-}
-
-/* ===== Buttons ===== */
-
-button{
-    width:90%;
-    max-width:320px;
-    display:block;
-    margin:10px auto;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    background:#0d47a1;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    background:#1565c0;
-    transform:scale(1.03);
-}
-
-/* ===== Tables ===== */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
-}
-
-th{
-    background:#0d47a1;
-    color:white;
-    padding:12px;
-}
-
-td{
-    padding:10px;
-    border:1px solid #ddd;
-    text-align:center;
-}
-
-/* ===== Receipt ===== */
-
-.receipt{
-    max-width:700px;
-    margin:20px auto;
-    background:white;
-    padding:25px;
-    border:2px solid #0d47a1;
-    border-radius:10px;
-}
-
-.receipt-header{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    border-bottom:2px solid #0d47a1;
-    padding-bottom:15px;
-}
-
-.receipt-header img{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-}
-
-.receipt-title{
-    flex:1;
-}
-
-.printBtn{
-    margin-top:25px;
-}
-
-@media print{
-
-.printBtn{
-display:none;
-}
-
-body{
-background:white;
-}
-
-}
-
-/* ===== Mobile ===== */
-
-@media(max-width:600px){
-
-.admin-header{
-    flex-direction:column;
-    justify-content:center;
-    padding-top:95px;
-    text-align:center;
-}
-
-.admin-header .logo{
-    position:absolute;
-    top:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:55px;
-    height:55px;
-}
-
-.admin-header .title h1{
-    font-size:28px;
-    letter-spacing:1px;
-}
-
-.admin-header .title p{
-    font-size:16px;
-}
-
-.hero h2{
-    font-size:24px;
-}
-
-.hero p{
-    font-size:16px;
-}
-
-section{
-    margin:12px;
-    padding:15px;
-}
-
-button{
-    width:100%;
-    font-size:16px;
-}
-
-table{
-    display:block;
-    overflow-x:auto;
-    font-size:14px;
-}
-
-}
-/* ===== Premium Hero Section ===== */
-
-header{
-    background: linear-gradient(135deg,#0d47a1,#1976d2);
-    color:white;
-    text-align:center;
-    padding:40px 20px;
-}
-
-header h1{
-    font-size:42px;
-    margin:0;
-}
-
-header p{
-    font-size:20px;
-    margin-top:10px;
-}
-
-.hero{
+    width:92%;
     max-width:900px;
-    margin:30px auto;
-    background:white;
-    padding:30px;
+    margin:20px auto;
+    padding:30px 20px;
     border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
     text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
 .hero h2{
+    font-size:42px;
     color:#0d47a1;
-    font-size:36px;
     margin-bottom:10px;
 }
 
 .tagline{
-    font-size:20px;
-    color:#444;
+    font-size:22px;
+    color:#555;
     margin-bottom:20px;
 }
 
 .hero p{
-    font-size:18px;
+    font-size:19px;
     margin:10px 0;
+}
+
+/* Buttons */
+
+.hero a{
+    text-decoration:none;
 }
 
 .hero button{
     width:100%;
     max-width:350px;
-    padding:15px;
     margin:10px auto;
     display:block;
-    background:#1565c0;
-    color:white;
+    padding:16px;
     border:none;
     border-radius:12px;
+    background:#1565c0;
+    color:white;
     font-size:18px;
+    font-weight:bold;
     cursor:pointer;
     transition:.3s;
 }
@@ -629,4 +82,214 @@ header p{
 .hero button:hover{
     background:#0d47a1;
     transform:scale(1.03);
+}
+
+/* Sections */
+
+section{
+    background:white;
+    width:92%;
+    max-width:900px;
+    margin:25px auto;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 18px rgba(0,0,0,.10);
+}
+
+section h2{
+    text-align:center;
+    color:#0d47a1;
+    font-size:36px;
+    margin-bottom:25px;
+}
+
+/* Form */
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:14px;
+    margin:12px 0;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+textarea{
+    resize:none;
+    height:100px;
+}
+
+form button{
+    width:100%;
+    background:#0d47a1;
+    color:white;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+form button:hover{
+    background:#1565c0;
+}
+
+/* Admin Header */
+
+.admin-header{
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    position:relative;
+    border-bottom:4px solid #0d47a1;
+}
+
+.admin-header .logo{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    position:absolute;
+    left:20px;
+}
+
+.admin-header .title{
+    text-align:center;
+}
+
+.admin-header .title h1{
+    color:#d50000;
+    font-size:34px;
+}
+
+.admin-header .title p{
+    color:#0d47a1;
+    margin-top:5px;
+    font-weight:bold;
+}
+
+/* Cards */
+
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    margin:15px 0;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+/* Tables */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th{
+    background:#0d47a1;
+    color:white;
+    padding:12px;
+}
+
+td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+/* Receipt */
+
+.receipt{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border:2px solid #0d47a1;
+    border-radius:12px;
+}
+
+.receipt-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.receipt-header img{
+    width:75px;
+    border-radius:50%;
+}
+
+.printBtn{
+    margin-top:20px;
+}
+
+@media print{
+
+.printBtn{
+display:none;
+}
+
+body{
+background:white;
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.hero{
+    padding:20px 15px;
+}
+
+.hero h2{
+    font-size:30px;
+}
+
+.tagline{
+    font-size:18px;
+}
+
+.hero p{
+    font-size:17px;
+}
+
+.hero button{
+    font-size:17px;
+}
+
+section{
+    padding:18px;
+}
+
+section h2{
+    font-size:28px;
+}
+
+.admin-header{
+    flex-direction:column;
+    padding-top:90px;
+}
+
+.admin-header .logo{
+    left:50%;
+    transform:translateX(-50%);
+    top:15px;
+}
+
+.admin-header .title h1{
+    font-size:28px;
+}
+
+table{
+    display:block;
+    overflow-x:auto;
+}
+
 }
