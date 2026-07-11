@@ -293,3 +293,13 @@ table{
 }
 
 }
+
+.hero-banner{
+    width:100%;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    display:block;
+}
