@@ -1,91 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>DUBEY CLASSES</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
-<!-- Hero Banner -->
-<header class="hero-banner">
-
-    <img src="banner.png" alt="DUBEY CLASSES Banner">
-
-    <a href="tel:7503322363" class="btn-call" aria-label="Call Now"></a>
-
-    <a href="https://wa.me/917503322363" class="btn-whatsapp" aria-label="WhatsApp"></a>
-
-    <a href="#admissionForm" class="btn-admission" aria-label="Apply Online"></a>
-
-    <a href="https://maps.app.goo.gl/pQx4RVfvJTjtXjueA?g_st=aw" class="btn-location" aria-label="Get Directions"></a>
-
-    <a href="login.html" class="btn-admin" aria-label="Admin Login"></a>
-
-</header>
-<!-- Online Admission -->
-<section>
-
-<h2>Online Admission</h2>
-
-<form id="admissionForm">
-
-<input type="text" id="name" placeholder="Student Name" required>
-
-<input type="text" id="father" placeholder="Father Name" required>
-
-<input type="text" id="class" placeholder="Class" required>
-
-<input type="tel" id="mobile" placeholder="Mobile Number" required>
-
-<input type="file" id="photo" accept="image/*">
-
-<textarea id="address" placeholder="Address"></textarea>
-
-<button type="submit">Submit Admission</button>
-
-</form>
-
-</section>
-<section class="about-teacher">
-
-<h2>About the Teacher</h2>
-
-<div class="teacher-card">
-
-<h3>Expert Guidance for Academic Success</h3>
-
-<p><strong>Qualifications</strong></p>
-
-<p>🎓 B.Tech (Electronics & Communication)</p>
-<p>🎓 B.Ed.</p>
-<p>🎓 M.Sc. (Physics)</p>
-
-<br>
-
-<p><strong>Teaching Experience</strong></p>
-
-<p>📘 12+ Years of Teaching Experience</p>
-
-<br>
-
-<p>
-Dedicated to helping students of Classes VI–X build strong concepts in
-Mathematics and Science through simple explanations, regular practice,
-and individual attention.
-</p>
-
+<header class="hero">
+<div class="wrap">
+<h1>DUBEY CLASSES</h1>
+<p class="tag">Building Bright Futures in Mathematics & Science</p>
+<p>📍 Anand Marg Colony, DVC, Bhagalpur</p>
+<div class="buttons">
+<a class="btn" href="tel:7503322363">📞 Call Now</a>
+<a class="btn" href="https://wa.me/917503322363">💬 WhatsApp</a>
+<a class="btn" href="#admissionForm">📝 Apply Online</a>
+<a class="btn" href="https://maps.app.goo.gl/pQx4RVfvJTjtXjueA?g_st=aw">📍 Get Directions</a>
+<a class="btn" href="login.html">🔐 Admin Login</a>
 </div>
+</div>
+</header>
 
+<section class="card">
+<h2>Online Admission</h2>
+<form id="admissionForm">
+<input type="text" id="name" placeholder="Student Name" required>
+<input type="text" id="father" placeholder="Father Name" required>
+<input type="text" id="class" placeholder="Class" required>
+<input type="tel" id="mobile" placeholder="Mobile Number" required>
+<input type="file" id="photo" accept="image/*">
+<textarea id="address" placeholder="Address"></textarea>
+<button type="submit">Submit Admission</button>
+</form>
 </section>
+
+<section class="card">
+<h2>About the Teacher</h2>
+<ul>
+<li>B.Tech (Electronics & Communication)</li>
+<li>B.Ed.</li>
+<li>M.Sc. (Physics)</li>
+<li>12+ Years Teaching Experience</li>
+</ul>
+<p>Dedicated to helping students of Classes VI–X build strong concepts in Mathematics and Science through simple explanations, regular practice and individual attention.</p>
+</section>
+
 <script type="module" src="firebase.js"></script>
-
 </body>
-
 </html>
