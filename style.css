@@ -327,3 +327,50 @@ table{
     font-size:18px;
     line-height:1.8;
 }
+.hero-banner{
+    position:relative;
+}
+
+.call-hotspot,
+.whatsapp-hotspot,
+.apply-hotspot,
+.location-hotspot,
+.admin-hotspot{
+    position:absolute;
+    display:block;
+}
+
+.call-hotspot{
+    left:2%;
+    top:80%;
+    width:18%;
+    height:10%;
+}
+
+.whatsapp-hotspot{
+    left:22%;
+    top:80%;
+    width:18%;
+    height:10%;
+}
+
+.apply-hotspot{
+    left:42%;
+    top:80%;
+    width:18%;
+    height:10%;
+}
+
+.location-hotspot{
+    left:62%;
+    top:80%;
+    width:18%;
+    height:10%;
+}
+
+.admin-hotspot{
+    left:82%;
+    top:80%;
+    width:16%;
+    height:10%;
+}
