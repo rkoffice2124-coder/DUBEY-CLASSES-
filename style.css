@@ -1,6 +1,5 @@
 /* =====================================
-   DUBEY CLASSES
-   Professional Website Style
+   DUBEY CLASSES Website Version 4.0
 ===================================== */
 
 *{
@@ -13,13 +12,13 @@
 body{
     background:#f4f7fc;
     color:#333;
+    line-height:1.6;
 }
 
 /* Banner */
 
 .hero-banner{
     width:100%;
-    overflow:hidden;
 }
 
 .hero-banner img{
@@ -27,87 +26,87 @@ body{
     display:block;
 }
 
-/* Hero Section */
-
-.hero{
-    background:white;
-    width:92%;
-    max-width:900px;
-    margin:20px auto;
-    padding:30px 20px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.hero h2{
-    font-size:42px;
-    color:#0d47a1;
-    margin-bottom:10px;
-}
-
-.tagline{
-    font-size:22px;
-    color:#555;
-    margin-bottom:20px;
-}
-
-.hero p{
-    font-size:19px;
-    margin:10px 0;
-}
-
-/* Buttons */
-
-.hero a{
-    text-decoration:none;
-}
-
-.hero button{
-    width:100%;
-    max-width:350px;
-    margin:10px auto;
-    display:block;
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:#1565c0;
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.hero button:hover{
-    background:#0d47a1;
-    transform:scale(1.03);
-}
-
 /* Sections */
 
 section{
-    background:white;
     width:92%;
-    max-width:900px;
+    max-width:1000px;
     margin:25px auto;
+}
+
+/* Navigation Cards */
+
+.menu-section{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.menu-card{
+    background:#ffffff;
     padding:25px;
-    border-radius:18px;
-    box-shadow:0 5px 18px rgba(0,0,0,.10);
+    border-radius:15px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.menu-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+
+.menu-card h3{
+    color:#0d47a1;
+    margin-bottom:10px;
+    font-size:24px;
+}
+
+.menu-card p{
+    color:#666;
+    font-size:16px;
+}
+
+/* Content Cards */
+
+.card,
+.teacher-card{
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    margin-top:20px;
+}
+
+.teacher-card{
+    border-left:6px solid #0d47a1;
 }
 
 section h2{
     text-align:center;
     color:#0d47a1;
-    font-size:36px;
-    margin-bottom:25px;
+    margin-bottom:20px;
+    font-size:34px;
+}
+
+.card h3,
+.teacher-card h3{
+    color:#0d47a1;
+    margin-bottom:15px;
+}
+
+.card p,
+.teacher-card p{
+    margin:10px 0;
+    font-size:18px;
 }
 
 /* Form */
 
 input,
-textarea,
-select{
+select,
+textarea{
     width:100%;
     padding:14px;
     margin:12px 0;
@@ -117,260 +116,55 @@ select{
 }
 
 textarea{
-    resize:none;
-    height:100px;
+    resize:vertical;
+    min-height:120px;
 }
 
-form button{
+button{
     width:100%;
-    background:#0d47a1;
-    color:white;
     padding:15px;
     border:none;
     border-radius:10px;
+    background:#0d47a1;
+    color:white;
     font-size:18px;
     cursor:pointer;
+    transition:.3s;
 }
 
-form button:hover{
+button:hover{
     background:#1565c0;
 }
 
-/* Admin Header */
+/* Footer */
 
-.admin-header{
-    background:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    position:relative;
-    border-bottom:4px solid #0d47a1;
-}
-
-.admin-header .logo{
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    position:absolute;
-    left:20px;
-}
-
-.admin-header .title{
-    text-align:center;
-}
-
-.admin-header .title h1{
-    color:#d50000;
-    font-size:34px;
-}
-
-.admin-header .title p{
-    color:#0d47a1;
-    margin-top:5px;
-    font-weight:bold;
-}
-
-/* Cards */
-
-.card{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    margin:15px 0;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-/* Tables */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
-}
-
-th{
+footer{
+    margin-top:40px;
     background:#0d47a1;
     color:white;
-    padding:12px;
-}
-
-td{
-    border:1px solid #ddd;
-    padding:10px;
     text-align:center;
-}
-
-/* Receipt */
-
-.receipt{
-    max-width:700px;
-    margin:auto;
-    background:white;
-    padding:25px;
-    border:2px solid #0d47a1;
-    border-radius:12px;
-}
-
-.receipt-header{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:20px;
-}
-
-.receipt-header img{
-    width:75px;
-    border-radius:50%;
-}
-
-.printBtn{
-    margin-top:20px;
-}
-
-@media print{
-
-.printBtn{
-display:none;
-}
-
-body{
-background:white;
-}
-
+    padding:20px;
 }
 
 /* Mobile */
 
-@media(max-width:600px){
+@media(max-width:768px){
 
-.hero{
-    padding:20px 15px;
-}
+    section{
+        width:95%;
+    }
 
-.hero h2{
-    font-size:30px;
-}
+    section h2{
+        font-size:28px;
+    }
 
-.tagline{
-    font-size:18px;
-}
+    .menu-card h3{
+        font-size:22px;
+    }
 
-.hero p{
-    font-size:17px;
-}
+    .card p,
+    .teacher-card p{
+        font-size:16px;
+    }
 
-.hero button{
-    font-size:17px;
-}
-
-section{
-    padding:18px;
-}
-
-section h2{
-    font-size:28px;
-}
-
-.admin-header{
-    flex-direction:column;
-    padding-top:90px;
-}
-
-.admin-header .logo{
-    left:50%;
-    transform:translateX(-50%);
-    top:15px;
-}
-
-.admin-header .title h1{
-    font-size:28px;
-}
-
-table{
-    display:block;
-    overflow-x:auto;
-}
-
-}
-.hero-banner{
-    width:100%;
-    overflow:hidden;
-}
-
-.hero-banner img{
-    width:100%;
-    display:block;
-}
-/* About Teacher */
-
-.about-teacher{
-    max-width:900px;
-    margin:30px auto;
-}
-
-.teacher-card{
-    background:#ffffff;
-    border-left:6px solid #0d47a1;
-    border-radius:15px;
-    padding:25px;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-
-.teacher-card h3{
-    color:#0d47a1;
-    margin-bottom:15px;
-    text-align:center;
-}
-
-.teacher-card p{
-    font-size:18px;
-    line-height:1.8;
-}
-.hero-banner{
-    position:relative;
-}
-
-.call-hotspot,
-.whatsapp-hotspot,
-.apply-hotspot,
-.location-hotspot,
-.admin-hotspot{
-    position:absolute;
-    display:block;
-}
-
-.call-hotspot{
-    left:2%;
-    top:80%;
-    width:18%;
-    height:10%;
-}
-
-.whatsapp-hotspot{
-    left:22%;
-    top:80%;
-    width:18%;
-    height:10%;
-}
-
-.apply-hotspot{
-    left:42%;
-    top:80%;
-    width:18%;
-    height:10%;
-}
-
-.location-hotspot{
-    left:62%;
-    top:80%;
-    width:18%;
-    height:10%;
-}
-
-.admin-hotspot{
-    left:82%;
-    top:80%;
-    width:16%;
-    height:10%;
 }
