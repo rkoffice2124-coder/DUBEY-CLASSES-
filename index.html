@@ -51,33 +51,279 @@
 <p>DUBEY CLASSES provides quality Mathematics & Science coaching for Classes VI–X with concept-based learning, personal attention and regular practice.</p>
 <p><strong>Director:<br>RAKESH DUBEY</strong><br>B.Tech (E&C)<br>B.Ed<br>M.Sc (Physics)<br>12+ Years Teaching Experience</p>
 </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DUBEY CLASSES | Maths & Science Coaching</title>
+
+<meta name="description"
+content="DUBEY CLASSES - Quality Mathematics & Science Coaching for Classes VI to X">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- ===========================
+     HERO BANNER
+=========================== -->
+
+<div class="hero-banner">
+
+<img src="banner.png" alt="DUBEY CLASSES Banner">
+
+<!-- Invisible Clickable Hotspots -->
+
+<a href="tel:7503322363"
+class="call-hotspot"
+title="Call Now"></a>
+
+<a href="https://wa.me/917503322363"
+target="_blank"
+class="whatsapp-hotspot"
+title="WhatsApp"></a>
+
+<a href="#admissionSection"
+class="apply-hotspot"
+onclick="showSection('admissionSection')"
+title="Apply Online"></a>
+
+<a href="https://maps.google.com/?q=Anand+Marg+Colony+DVC+Aliganj+Bhagalpur"
+target="_blank"
+class="location-hotspot"
+title="Location"></a>
+
+<a href="admin.html"
+class="admin-hotspot"
+title="Admin Login"></a>
+
+</div>
+
+<!-- ===========================
+     HOME MENU
+=========================== -->
+
+<section class="home-menu">
+
+<div class="card">
+<button onclick="showSection('aboutSection')">
+📘 About Us
+</button>
+</div>
+
+<div class="card">
+<button onclick="showSection('whySection')">
+⭐ Why Choose Us
+</button>
+</div>
+
+<div class="card">
+<button onclick="showSection('admissionSection')">
+📝 Admission Form
+</button>
+</div>
+
 </section>
 
-<section><h2>Why Choose Us?</h2><div class="card">
-<p>✔ Concept-Based Teaching</p><p>✔ Regular Tests</p><p>✔ Doubt Clearing</p><p>✔ Personal Attention</p><p>✔ Exam-Oriented Preparation</p>
-</div></section>
+<!-- ===========================
+ABOUT US
+=========================== -->
 
-<section id="courses"><h2>Courses</h2><div class="card"><h3>Classes VI–X</h3><p>Mathematics & Science</p></div></section>
+<section id="aboutSection" style="display:none;">
 
-<section id="admission"><h2>Online Admission</h2>
+<h2>About DUBEY CLASSES</h2>
+
+<div class="teacher-card">
+
+<h3>Welcome to DUBEY CLASSES</h3>
+
+<p>
+
+DUBEY CLASSES is committed to providing quality education in
+<strong>Mathematics</strong> and
+<strong>Science</strong> for students of
+Classes VI to X.
+
+</p>
+
+<p>
+
+Our teaching focuses on concept clarity,
+individual attention,
+regular practice,
+discipline and excellent academic performance.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Director</h3>
+
+<p><strong>Qualifications</strong></p>
+
+<p>🎓 B.Tech (Electronics & Communication)</p>
+
+<p>🎓 B.Ed</p>
+
+<p>🎓 M.Sc (Physics)</p>
+
+<p>📚 12+ Years Teaching Experience</p>
+
+<p>
+
+Dedicated to helping every student achieve success
+through quality education and personal guidance.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+WHY CHOOSE US
+=========================== -->
+
+<section id="whySection" style="display:none;">
+
+<h2>Why Choose Us</h2>
+
+<div class="card">
+
+<p>✅ Concept-Based Learning</p>
+
+<p>✅ Personal Attention</p>
+
+<p>✅ Regular Class Tests</p>
+
+<p>✅ Doubt Clearing Sessions</p>
+
+<p>✅ Exam-Oriented Preparation</p>
+
+<p>✅ Friendly Learning Environment</p>
+
+<p>✅ Strong Foundation in Maths & Science</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+ONLINE ADMISSION
+=========================== -->
+
+<section id="admissionSection" style="display:none;">
+
+<h2>Online Admission Form</h2>
+
+<div class="card">
+
 <form id="admissionForm">
-<input id="name" type="text" placeholder="Student Name" required>
-<input id="father" type="text" placeholder="Parent Name" required>
-<input id="mobile" type="tel" placeholder="Mobile Number" required>
-<select id="class" required><option value="">Select Class</option><option>Class VI</option><option>Class VII</option><option>Class VIII</option><option>Class IX</option><option>Class X</option></select>
-<textarea id="address" placeholder="Address"></textarea>
-<button type="submit">Submit Admission</button>
+
+<input
+type="text"
+id="name"
+placeholder="Student Name"
+required>
+
+<input
+type="text"
+id="father"
+placeholder="Parent / Guardian Name"
+required>
+
+<input
+type="tel"
+id="mobile"
+placeholder="Mobile Number"
+required>
+
+<select
+id="class"
+required>
+
+<option value="">Select Class</option>
+
+<option>Class VI</option>
+<option>Class VII</option>
+<option>Class VIII</option>
+<option>Class IX</option>
+<option>Class X</option>
+
+</select>
+
+<textarea
+id="address"
+placeholder="Complete Address"></textarea>
+
+<button type="submit">
+
+Submit Admission
+
+</button>
+
 </form>
-<p style="text-align:center">Admissions are open throughout the year. Contact us for batch timings.</p>
+
+</div>
+<div class="card">
+
+<h3>Admission Process</h3>
+
+<p>1️⃣ Fill in the Online Admission Form.</p>
+
+<p>2️⃣ Submit your details.</p>
+
+<p>3️⃣ Our team will contact you shortly.</p>
+
+<p>4️⃣ Visit DUBEY CLASSES with the student for counselling and admission.</p>
+
+</div>
+
 </section>
 
-<section id="contact"><h2>Contact Us</h2><div class="card">
-<p>📍 Anand Marg Colony, DVC, Aliganj, Bhagalpur</p>
-<p>📞 <a href="tel:7503322363">7503322363</a></p>
-<p><a href="https://maps.google.com/?q=Anand+Marg+Colony+DVC+Aliganj+Bhagalpur">🗺️ Google Maps</a></p>
-</div></section>
+<!-- ===========================
+FOOTER
+=========================== -->
 
-<footer><p>© 2026 DUBEY CLASSES | Your Success is our Success</p></footer>
-<a class="whatsapp" href="https://wa.me/917503322363?text=Hello">💬</a>
+<footer style="text-align:center;padding:20px;background:#0d47a1;color:white;margin-top:30px;">
+
+<p>
+
+© 2026 <strong>DUBEY CLASSES</strong>
+
+</p>
+
+<p>
+
+Mathematics & Science Coaching
+
+</p>
+
+<p>
+
+Classes VI – X
+
+</p>
+
+</footer>
+
+<!-- Firebase -->
+
 <script type="module" src="firebase.js"></script>
-</body></html>
+
+<!-- Website Script -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
