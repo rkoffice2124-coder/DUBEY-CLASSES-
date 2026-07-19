@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fee Collection - DUBEY CLASSES</title>
+<title>DUBEY CLASSES | Fee Collection</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -12,20 +14,37 @@
 
 <body>
 
-<header class="header">
+<header class="admin-header">
+
+<div class="admin-brand">
 
 <img src="logo.png" alt="DUBEY CLASSES Logo" class="logo">
 
 <div>
+
 <h1>DUBEY CLASSES</h1>
+
 <p>Fee Collection</p>
+
 </div>
+
+</div>
+
+<button
+class="logout-btn"
+onclick="location.href='admin.html'">
+
+🏠 Dashboard
+
+</button>
 
 </header>
 
 <section>
 
-<h2>Collect Monthly Fee</h2>
+<h2>💰 Monthly Fee Collection</h2>
+
+<div class="card">
 
 <form id="feeForm">
 
@@ -38,7 +57,7 @@ required>
 <input
 type="text"
 id="father"
-placeholder="Father Name"
+placeholder="Father / Guardian Name"
 required>
 
 <select id="studentClass" required>
@@ -46,13 +65,9 @@ required>
 <option value="">Select Class</option>
 
 <option value="6">Class VI</option>
-
 <option value="7">Class VII</option>
-
 <option value="8">Class VIII</option>
-
 <option value="9">Class IX</option>
-
 <option value="10">Class X</option>
 
 </select>
@@ -70,14 +85,39 @@ readonly
 required>
 
 <button type="submit">
+
 💰 Save Fee & Print Receipt
+
 </button>
 
 </form>
+
+</div>
+
+<div class="card">
+
+<h3>📋 Monthly Fee Structure</h3>
+
+<p><strong>Class VI – VIII :</strong> ₹2,000</p>
+
+<p><strong>Class IX – X :</strong> ₹2,500</p>
+
+</div>
+
+<div class="card" style="text-align:center;">
+
+<button onclick="location.href='admin.html'">
+
+⬅ Back to Dashboard
+
+</button>
+
+</div>
 
 </section>
 
 <script type="module" src="fees.js"></script>
 
 </body>
+
 </html>

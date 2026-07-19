@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fee Receipt</title>
+
+<title>DUBEY CLASSES | Fee Receipt</title>
 
 <link rel="stylesheet" href="style.css">
 
 <style>
+
+body{
+    background:#f4f7fc;
+}
+
 .receipt{
-    max-width:700px;
-    margin:20px auto;
-    background:white;
-    padding:25px;
-    border:2px solid #0d47a1;
-    border-radius:10px;
+    max-width:750px;
+    margin:30px auto;
+    background:#fff;
+    padding:30px;
+    border:3px solid #0d47a1;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
 }
 
 .receipt-header{
     display:flex;
     align-items:center;
     gap:20px;
-    border-bottom:2px solid #0d47a1;
-    padding-bottom:15px;
+    border-bottom:3px solid #0d47a1;
+    padding-bottom:18px;
 }
 
 .receipt-header img{
-    width:90px;
-    height:90px;
+    width:80px;
+    height:80px;
     border-radius:50%;
+    object-fit:contain;
 }
 
 .receipt-title{
@@ -36,29 +46,91 @@
 }
 
 .receipt-title h1{
-    color:#0d47a1;
+    color:#d50000;
+    font-size:34px;
+    margin-bottom:5px;
+}
+
+.receipt-title p{
+    margin:3px 0;
+}
+
+.receipt-heading{
+    margin:25px 0;
+    text-align:center;
+    background:#0d47a1;
+    color:#fff;
+    padding:12px;
+    border-radius:8px;
+    font-size:22px;
+    font-weight:bold;
 }
 
 .receipt table{
     width:100%;
-    margin-top:20px;
     border-collapse:collapse;
 }
 
 .receipt td{
-    padding:12px;
     border:1px solid #ddd;
+    padding:14px;
+}
+
+.receipt td:first-child{
+    width:35%;
+    background:#f7f9ff;
+    font-weight:bold;
+}
+
+.amount{
+    color:#2e7d32;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.footer{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.status{
+    color:#2e7d32;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.signature{
+    text-align:center;
+}
+
+.signature hr{
+    width:180px;
 }
 
 .printBtn{
-    margin-top:25px;
+    margin-top:30px;
 }
 
 @media print{
+
+body{
+    background:#fff;
+}
+
 .printBtn{
-display:none;
+    display:none;
 }
+
+.receipt{
+    box-shadow:none;
+    border:2px solid #000;
+    margin:0;
 }
+
+}
+
 </style>
 
 </head>
@@ -69,103 +141,89 @@ display:none;
 
 <div class="receipt-header">
 
-<img src="logo.png">
+<img src="logo.png" alt="Logo">
 
 <div class="receipt-title">
 
-<h1 style="color:#d50000;font-size:34px;">
-DUBEY CLASSES
-</h1>
+<h1>DUBEY CLASSES</h1>
+
+<p><strong>Mathematics & Science Coaching (Classes VI–X)</strong></p>
 
 <p>Anand Marg Colony, DVC, Aliganj, Bhagalpur</p>
 
 <p>📞 7503322363</p>
 
-<hr style="margin:10px 0;">
-
-<p style="font-size:18px;font-weight:bold;color:#0d47a1;">
-MONTHLY FEE RECEIPT
-</p>
-
 </div>
 
 </div>
 
-<h2 style="
-text-align:center;
-margin:20px 0;
-background:#0d47a1;
-color:white;
-padding:10px;
-border-radius:6px;">
+<div class="receipt-heading">
+
 MONTHLY FEE RECEIPT
-</h2>
+
+</div>
 
 <table>
 
 <tr>
-<td><b>Receipt No.</b></td>
+<td>Receipt No.</td>
 <td id="receiptNo">DC-2026-0001</td>
 </tr>
 
 <tr>
-<td><b>Student Name</b></td>
+<td>Student Name</td>
 <td id="studentName"></td>
 </tr>
 
 <tr>
-<td><b>Father Name</b></td>
+<td>Father / Guardian</td>
 <td id="fatherName"></td>
 </tr>
 
 <tr>
-<td><b>Class</b></td>
+<td>Class</td>
 <td id="studentClass"></td>
 </tr>
 
 <tr>
-<td><b>Fee Month</b></td>
+<td>Fee Month</td>
 <td id="feeMonth"></td>
 </tr>
 
 <tr>
-<td><b>Amount Paid</b></td>
-<td id="amount" style="font-size:22px;color:green;font-weight:bold;"></td>
+<td>Amount Paid</td>
+<td id="amount" class="amount"></td>
 </tr>
 
 <tr>
-<td><b>Date</b></td>
+<td>Payment Date</td>
 <td id="paidDate"></td>
 </tr>
 
 </table>
 
-<div style="margin-top:40px;display:flex;justify-content:space-between;">
+<div class="footer">
 
 <div>
-<b>Status:</b>
 
-<span style="color:green;">
-PAID
-</span>
+Status:
+<span class="status">PAID ✓</span>
 
 </div>
 
-<div>
+<div class="signature">
 
-<hr style="width:180px;border:1px solid #000;">
+<hr>
 
-<p><b>Authorized Signature</b></p>
+<b>Authorized Signature</b>
 
 </div>
 
 </div>
 
 <button class="printBtn" onclick="window.print()">
-🖨️ Print / Save as PDF
-</button>
 
-🖨️ Print Receipt
+🖨️ Print / Save as PDF
 
 </button>
 
@@ -174,4 +232,5 @@ PAID
 <script type="module" src="receipt.js"></script>
 
 </body>
+
 </html>

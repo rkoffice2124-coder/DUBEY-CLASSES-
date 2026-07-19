@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Edit Student - DUBEY CLASSES</title>
+<title>DUBEY CLASSES | Edit Student</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -13,20 +14,51 @@
 
 <body>
 
-<header>
+<header class="admin-header">
+
+<div class="admin-brand">
+
+<img src="logo.png" alt="DUBEY CLASSES Logo" class="logo">
+
+<div>
+
 <h1>DUBEY CLASSES</h1>
-<p>Edit Student</p>
+
+<p>Edit Student Details</p>
+
+</div>
+
+</div>
+
+<button
+class="logout-btn"
+onclick="location.href='students.html'">
+
+👨‍🎓 Student List
+
+</button>
+
 </header>
 
 <section>
 
-<h2>Edit Student Details</h2>
+<h2>✏️ Edit Student Details</h2>
+
+<div class="card">
 
 <form id="editForm">
 
-<input type="text" id="name" placeholder="Student Name" required>
+<input
+type="text"
+id="name"
+placeholder="Student Name"
+required>
 
-<input type="text" id="father" placeholder="Father Name" required>
+<input
+type="text"
+id="father"
+placeholder="Father / Guardian Name"
+required>
 
 <select id="className" required>
 
@@ -40,15 +72,37 @@
 
 </select>
 
-<input type="tel" id="mobile" placeholder="Mobile Number" required>
+<input
+type="tel"
+id="mobile"
+placeholder="Mobile Number"
+required>
 
-<textarea id="address" placeholder="Address"></textarea>
+<textarea
+id="address"
+placeholder="Complete Address"
+rows="4">
+</textarea>
 
 <button type="submit">
+
 💾 Update Student
+
 </button>
 
 </form>
+
+</div>
+
+<div class="card" style="text-align:center;">
+
+<button onclick="location.href='students.html'">
+
+⬅ Back to Student List
+
+</button>
+
+</div>
 
 </section>
 

@@ -693,50 +693,7 @@ table tr:hover{
     margin-bottom:20px;
 
 }
-/* ===========================
-   ADMIN HEADER
-=========================== */
 
-.admin-header{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:15px 20px;
-    background:#ffffff;
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
-
-.logo{
-    width:70px;
-    height:70px;
-    object-fit:contain;
-    border-radius:50%;
-}
-
-.title h1{
-    margin:0;
-    font-size:28px;
-    color:#0d47a1;
-}
-
-.title p{
-    margin:5px 0 0;
-    color:#666;
-}
-
-@media(max-width:768px){
-
-    .admin-header{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .logo{
-        width:60px;
-        height:60px;
-    }
-
-}
 /* ===========================
    LOGIN PAGE
 =========================== */
@@ -794,6 +751,97 @@ table tr:hover{
     height:60px;
 }
 
+}
+/* ===========================
+   ADMIN DASHBOARD
+=========================== */
+
+.admin-header{
+    background:#ffffff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 25px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.admin-brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.admin-brand .logo{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:contain;
+}
+
+.admin-brand h1{
+    color:#0d47a1;
+    margin:0;
+    font-size:28px;
+}
+
+.admin-brand p{
+    margin-top:4px;
+    color:#666;
+}
+
+.logout-btn{
+    width:auto;
+    padding:12px 24px;
+    background:#e53935;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.logout-btn:hover{
+    background:#c62828;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+@media(max-width:768px){
+
+.admin-header{
+    flex-direction:column;
+    gap:15px;
+    text-align:center;
+}
+
+.admin-brand{
+    flex-direction:column;
+}
+
+.admin-brand .logo{
+    width:60px;
+    height:60px;
+}
+
+}
+.dashboard-grid .card{
+    margin-top:0;
+    text-align:center;
+}
+
+.dashboard-grid .card h1{
+    color:#0d47a1;
+    font-size:42px;
+    margin:15px 0;
+}
+
+.dashboard-grid .card button{
+    width:100%;
 }
 /* ===========================
    VERSION 5.0 COMPLETE

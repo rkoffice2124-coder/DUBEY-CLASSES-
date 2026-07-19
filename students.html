@@ -1,50 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Students - Dubey Classes</title>
+
+<title>DUBEY CLASSES | Students</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<header>
+<header class="admin-header">
+
+<div class="admin-brand">
+
+<img src="logo.png" alt="DUBEY CLASSES Logo" class="logo">
+
+<div>
+
 <h1>DUBEY CLASSES</h1>
-<p>Student List</p>
+
+<p>Student Management</p>
+
+</div>
+
+</div>
+
+<button
+class="logout-btn"
+onclick="location.href='admin.html'">
+
+🏠 Dashboard
+
+</button>
+
 </header>
 
 <section>
 
-<h2>Registered Students</h2>
+<h2>👨‍🎓 Registered Students</h2>
+
+<div class="card">
 
 <input
 type="search"
 id="searchBox"
-placeholder="🔍 Search by Name, Father, Class or Mobile">
+placeholder="🔍 Search by Student Name, Father, Class or Mobile">
 
-<table border="1" width="100%" cellpadding="10">
+</div>
+
+<div class="card">
+
+<div style="overflow-x:auto;">
+
+<table>
+
 <thead>
+
 <tr>
-<th>Name</th>
+
+<th>Student</th>
+
 <th>Father</th>
+
 <th>Class</th>
+
 <th>Mobile</th>
+
 <th>Reminder</th>
+
 <th>Status</th>
+
 <th>Edit</th>
+
 <th>Delete</th>
+
 </tr>
+
 </thead>
 
 <tbody id="studentTable">
+
 </tbody>
 
 </table>
+
+</div>
+
+</div>
+
+<div class="card" style="text-align:center;">
+
+<button onclick="location.href='admin.html'">
+
+⬅ Back to Dashboard
+
+</button>
+
+</div>
 
 </section>
 
 <script type="module" src="students.js"></script>
 
 </body>
+
 </html>
