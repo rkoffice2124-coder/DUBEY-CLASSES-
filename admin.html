@@ -15,20 +15,35 @@
 
 <header class="admin-header">
 
-    <img src="logo.png" alt="DUBEY CLASSES Logo" class="logo">
+    <div class="admin-brand">
 
-    <div class="title">
-        <h1>DUBEY CLASSES</h1>
-        <p>Admin Dashboard</p>
+        <img src="logo.png"
+             alt="DUBEY CLASSES Logo"
+             class="logo">
+
+        <div>
+
+            <h1>DUBEY CLASSES</h1>
+
+            <p>Admin Dashboard</p>
+
+        </div>
+
     </div>
+
+    <button id="logoutBtn" class="logout-btn">
+        🚪 Logout
+    </button>
 
 </header>
 
 <section>
 
-    <h2>Dashboard</h2>
+<h2>Dashboard</h2>
 
-<div class="card">
+<div class="dashboard-grid">
+
+    <div class="card">
 
 <h3>👨‍🎓 Total Students</h3>
 
@@ -37,18 +52,19 @@
 <p>Registered Students</p>
 
 </div>
-    <div class="card">
+
+<div class="card">
     <h3>💰 Total Fees Collected</h3>
     <h1 id="totalFees">₹0</h1>
 </div>
-    <div class="card">
+<div class="card">
 
     <h3>📅 This Month Collection</h3>
 
     <h1 id="monthlyFees">₹0</h1>
 
 </div>
-    <div class="card">
+<div class="card">
 
     <h3>⏳ Pending Fees</h3>
 
@@ -82,12 +98,7 @@
         <p><strong>Class IX – X :</strong> ₹2,500</p>
     </div>
 
-    <div class="card">
-        <button id="logoutBtn">
-            🚪 Logout
-        </button>
-    </div>
-
+</div>
 </section>
 
 <script type="module" src="admin.js"></script>
