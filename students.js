@@ -40,35 +40,42 @@ async function loadData() {
   students = [];
 
   studentSnapshot.forEach((doc) => {
-  students.push({
-    id: doc.id,
-    ...doc.data()
+    students.push({
+      id: doc.id,
+      ...doc.data()
+    });
   });
-});
 
-  // Load Fees
+  // Load Fee Records
   const feeSnapshot = await getDocs(collection(db, "fees"));
 
   paidStudents.clear();
 
-  const currentMonth = new Date().toISOString().slice(0,7);
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
 
   feeSnapshot.forEach((doc) => {
 
     const fee = doc.data();
 
-    if (fee.month === currentMonth && fee.studentName) {
+    if (fee.paidOn && fee.studentName) {
 
-      paidStudents.add(
-        fee.studentName.trim().toLowerCase()
-      );
+      const paidDate = fee.paidOn.toDate();
 
+      if (
+        paidDate.getMonth() === currentMonth &&
+        paidDate.getFullYear() === currentYear
+      ) {
+        paidStudents.add(
+          fee.studentName.trim().toLowerCase()
+        );
+      }
     }
 
   });
 
   displayStudents(students);
-
 }
 
 function displayStudents(list) {
@@ -82,12 +89,12 @@ function displayStudents(list) {
 
     const isPaid = paidStudents.has(studentName);
 
-    const phone = "91" + (s.mobile || "").replace(/\D/g,"");
+    const phone = "91" + (s.mobile || "").replace(/\D/g, "");
 
     const message = encodeURIComponent(
 `Dear Parent,
 
-This is a gentle reminder that the tuition fee of ${s.name} for this month is still pending.
+This is a gentle reminder that the tuition fee of ${s.name} is pending.
 
 Kindly pay the fee at your earliest convenience.
 
@@ -98,59 +105,53 @@ DUBEY CLASSES
     );
 
     table.innerHTML += `
-    <tr>
+      <tr>
 
-      <td>
-  <a href="student-profile.html?id=${s.id}"
-     style="text-decoration:none;color:#0d47a1;font-weight:bold;">
-     ${s.name}
-  </a>
-</td>
+        <td>
+          <a href="student-profile.html?id=${s.id}" style="text-decoration:none;color:#0d47a1;font-weight:bold;">
+            ${s.name}
+          </a>
+        </td>
 
-      <td>${s.father}</td>
+        <td>${s.father}</td>
 
-      <td>${s.className}</td>
+        <td>${s.className}</td>
 
-      <td>${s.mobile}</td>
+        <td>${s.mobile}</td>
 
-      <td>
+        <td>
+          ${
+            isPaid
+              ? "—"
+              : `<a href="https://wa.me/${phone}?text=${message}" target="_blank">
+                  <button>📱 WhatsApp</button>
+                 </a>`
+          }
+        </td>
 
-      ${
-        isPaid
-        ? "—"
-        : `<a href="https://wa.me/${phone}?text=${message}" target="_blank">
-             <button>📱 WhatsApp</button>
-           </a>`
-      }
+        <td>
+          ${
+            isPaid
+              ? "<span style='color:green;font-weight:bold'>🟢 Paid</span>"
+              : "<span style='color:red;font-weight:bold'>🔴 Pending</span>"
+          }
+        </td>
 
-      </td>
+        <td>
+          <button onclick="window.location.href='edit-student.html?id=${s.id}'">
+            ✏️ Edit
+          </button>
+        </td>
 
-      <td>
+        <td>
+          <button onclick="deleteStudent('${s.id}')">
+            🗑️ Delete
+          </button>
+        </td>
 
-      ${
-        isPaid
-        ? "<span style='color:green;font-weight:bold'>🟢 Paid</span>"
-        : "<span style='color:red;font-weight:bold'>🔴 Pending</span>"
-      }
-
-      </td>
-      <td>
-  <button onclick="window.location.href='edit-student.html?id=${s.id}'">
-    ✏️ Edit
-  </button>
-</td>
-
-<td>
-  <button onclick="deleteStudent('${s.id}')">
-    🗑️ Delete
-  </button>
-</td>
-
-    </tr>
+      </tr>
     `;
-
   });
-
 }
 
 const searchBox = document.getElementById("searchBox");
@@ -167,26 +168,18 @@ searchBox.addEventListener("input", () => {
   );
 
   displayStudents(filtered);
-
 });
+
 window.deleteStudent = async function(id) {
 
-  const ok = confirm("Are you sure you want to delete this student?");
-
-  if (!ok) return;
+  if (!confirm("Are you sure you want to delete this student?")) return;
 
   try {
-
     await deleteDoc(doc(db, "admissions", id));
-
     alert("✅ Student deleted successfully.");
-
     loadData();
-
   } catch (error) {
-
-    alert("Error: " + error.message);
-
+    alert(error.message);
   }
 
 };
