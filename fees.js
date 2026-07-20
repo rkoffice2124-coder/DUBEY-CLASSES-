@@ -30,40 +30,43 @@ const form = document.getElementById("feeForm");
 const classSelect = document.getElementById("studentClass");
 const amountInput = document.getElementById("amount");
 
-// Set fee to ₹1500 for every class
+// Set fee to ₹1500
 function setFee() {
   amountInput.value = 1500;
 }
 
-// When class changes
+// Auto set fee
 classSelect.addEventListener("change", setFee);
-
-// Set fee on page load
 setFee();
 
-// Save fee
+// Save Fee
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   try {
+
     const receiptNo = "DC-" + Date.now();
 
     const docRef = await addDoc(collection(db, "fees"), {
       receiptNo: receiptNo,
-      studentName: document.getElementById("studentName").value,
-      father: document.getElementById("father").value,
+      studentName: document.getElementById("studentName").value.trim(),
+      father: document.getElementById("father").value.trim(),
       studentClass: classSelect.value,
       month: document.getElementById("feeMonth").value,
       amount: Number(amountInput.value),
       paidOn: new Date()
     });
 
-    alert("Fee saved successfully!");
+    alert("✅ Fee saved successfully!");
 
     window.location.href = "receipt.html?id=" + docRef.id;
 
   } catch (error) {
+
     console.error(error);
-    alert("Error saving fee.");
+
+    alert("Error saving fee: " + error.message);
+
   }
+
 });
