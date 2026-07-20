@@ -19,57 +19,51 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+// Check login
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "login.html";
   }
 });
 
+const form = document.getElementById("feeForm");
 const classSelect = document.getElementById("studentClass");
 const amountInput = document.getElementById("amount");
 
-// Automatically set fee amount
-classSelect.addEventListener("change", () => {
-  const cls = parseInt(classSelect.value);
+// Set fee to ₹1500 for every class
+function setFee() {
+  amountInput.value = 1500;
+}
 
-  if (cls >= 6 && cls <= 8) {
-    amountInput.value = 1500;
-  } else if (cls >= 9 && cls <= 10) {
-    amountInput.value = 1500;
-  }
-});
+// When class changes
+classSelect.addEventListener("change", setFee);
 
-const form = document.getElementById("feeForm");
+// Set fee on page load
+setFee();
 
+// Save fee
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const docRef = await addDoc(collection(db, "fees"), {
-    studentName: document.getElementById("studentName").value,
-    father: document.getElementById("father").value,
-    studentClass: classSelect.value,
-    month: document.getElementById("feeMonth").value,
-    amount: Number(amountInput.value),
-    paidOn: new Date()
-});
-    studentName: document.getElementById("studentName").value,
-    studentClass: classSelect.value,
-    month: document.getElementById("feeMonth").value,
-    amount: Number(amountInput.value),
-    paidOn: new Date()
-  });
+  try {
+    const receiptNo = "DC-" + Date.now();
 
-  alert("Fee saved successfully!");
-window.location.href = "receipt.html?id=" + docRef.id;
-});
-const receiptNo = "DC-" + Date.now();
+    const docRef = await addDoc(collection(db, "fees"), {
+      receiptNo: receiptNo,
+      studentName: document.getElementById("studentName").value,
+      father: document.getElementById("father").value,
+      studentClass: classSelect.value,
+      month: document.getElementById("feeMonth").value,
+      amount: Number(amountInput.value),
+      paidOn: new Date()
+    });
 
-const docRef = await addDoc(collection(db, "fees"), {
-  receiptNo: receiptNo,
-  studentName: document.getElementById("studentName").value,
-  father: document.getElementById("father").value,
-  studentClass: classSelect.value,
-  month: document.getElementById("feeMonth").value,
-  amount: Number(amountInput.value),
-  paidOn: new Date()
+    alert("Fee saved successfully!");
+
+    window.location.href = "receipt.html?id=" + docRef.id;
+
+  } catch (error) {
+    console.error(error);
+    alert("Error saving fee.");
+  }
 });
