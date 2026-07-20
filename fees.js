@@ -19,52 +19,48 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// Check Login
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "login.html";
   }
 });
 
-const form = document.getElementById("feeForm");
 const classSelect = document.getElementById("studentClass");
 const amountInput = document.getElementById("amount");
 
-// Auto Fee Amount
+// Automatically set fee amount
 classSelect.addEventListener("change", () => {
   const cls = parseInt(classSelect.value);
 
   if (cls >= 6 && cls <= 8) {
-    amountInput.value = 2000;
+    amountInput.value = 1500;
   } else if (cls >= 9 && cls <= 10) {
-    amountInput.value = 2500;
-  } else {
-    amountInput.value = "";
+    amountInput.value = 1500;
   }
 });
 
-// Save Fee
+const form = document.getElementById("feeForm");
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  try {
+  const docRef = await addDoc(collection(db, "fees"), {
+    studentName: document.getElementById("studentName").value,
+    father: document.getElementById("father").value,
+    studentClass: classSelect.value,
+    month: document.getElementById("feeMonth").value,
+    amount: Number(amountInput.value),
+    paidOn: new Date()
+});
+    studentName: document.getElementById("studentName").value,
+    studentClass: classSelect.value,
+    month: document.getElementById("feeMonth").value,
+    amount: Number(amountInput.value),
+    paidOn: new Date()
+  });
 
-    const docRef = await addDoc(collection(db, "fees"), {
-      studentName: document.getElementById("studentName").value,
-      father: document.getElementById("father").value,
-      studentClass: classSelect.value,
-      month: document.getElementById("feeMonth").value,
-      amount: Number(amountInput.value),
-      paidOn: new Date()
-    });
-
-    alert("Fee saved successfully!");
-
-    window.location.href = "receipt.html?id=" + docRef.id;
-
-  } catch (error) {
-    alert("Error: " + error.message);
-  }
+  alert("Fee saved successfully!");
+window.location.href = "receipt.html?id=" + docRef.id;
 });
 const receiptNo = "DC-" + Date.now();
 
@@ -77,4 +73,3 @@ const docRef = await addDoc(collection(db, "fees"), {
   amount: Number(amountInput.value),
   paidOn: new Date()
 });
-  
