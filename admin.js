@@ -26,6 +26,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+// Check Login
 onAuthStateChanged(auth, (user) => {
   if (user) {
     loadDashboard();
@@ -48,21 +49,32 @@ async function loadDashboard() {
   let totalFee = 0;
   let monthlyFee = 0;
 
-  const currentMonth = new Date().toISOString().slice(0, 7);
-
   const paidStudents = new Set();
+
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
 
   feeSnapshot.forEach((doc) => {
 
     const fee = doc.data();
 
-    totalFee += fee.amount || 0;
+    totalFee += Number(fee.amount || 0);
 
-    if (fee.month === currentMonth) {
-      monthlyFee += fee.amount || 0;
+    if (fee.paidOn) {
 
-      if (fee.studentName) {
-        paidStudents.add(fee.studentName.trim().toLowerCase());
+      const paidDate = fee.paidOn.toDate();
+
+      if (
+        paidDate.getMonth() === currentMonth &&
+        paidDate.getFullYear() === currentYear
+      ) {
+
+        monthlyFee += Number(fee.amount || 0);
+
+        if (fee.studentName) {
+          paidStudents.add(fee.studentName.trim().toLowerCase());
+        }
       }
     }
 
@@ -71,13 +83,12 @@ async function loadDashboard() {
   document.getElementById("totalFees").textContent = "₹" + totalFee;
   document.getElementById("monthlyFees").textContent = "₹" + monthlyFee;
 
-  const pendingStudents = totalStudents - paidStudents.size;
+  const pendingStudents = Math.max(0, totalStudents - paidStudents.size);
 
-  document.getElementById("pendingStudents").textContent =
-    pendingStudents < 0 ? 0 : pendingStudents;
-
+  document.getElementById("pendingStudents").textContent = pendingStudents;
 }
 
+// Logout
 const logoutBtn = document.getElementById("logoutBtn");
 
 logoutBtn.addEventListener("click", async () => {
