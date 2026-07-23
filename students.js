@@ -47,33 +47,49 @@ async function loadData() {
   });
 
   // Load Fee Records
-  const feeSnapshot = await getDocs(collection(db, "fees"));
+const feeSnapshot = await getDocs(collection(db, "fees"));
 
-  paidStudents.clear();
+paidStudents.clear();
 
-  const today = new Date();
-  const currentMonth = today.getMonth();
-  const currentYear = today.getFullYear();
+// Expected paid month = Previous month
+const today = new Date();
 
-  feeSnapshot.forEach((doc) => {
+today.setMonth(today.getMonth() - 1);
 
-    const fee = doc.data();
+const expectedMonth =
+  today.getFullYear() +
+  "-" +
+  String(today.getMonth() + 1).padStart(2, "0");
 
-    if (fee.paidOn && fee.studentName) {
+// Store latest paid month of every student
+const latestPayment = {};
 
-      const paidDate = fee.paidOn.toDate();
+feeSnapshot.forEach((doc) => {
 
-      if (
-        paidDate.getMonth() === currentMonth &&
-        paidDate.getFullYear() === currentYear
-      ) {
-        paidStudents.add(
-          fee.studentName.trim().toLowerCase()
-        );
-      }
-    }
+  const fee = doc.data();
 
-  });
+  if (!fee.studentName || !fee.month) return;
+
+  const name = fee.studentName.trim().toLowerCase();
+
+  if (
+    !latestPayment[name] ||
+    fee.month > latestPayment[name]
+  ) {
+    latestPayment[name] = fee.month;
+  }
+
+});
+
+// Mark Paid only if latest paid month
+// is Expected Month or later
+Object.keys(latestPayment).forEach((name) => {
+
+  if (latestPayment[name] >= expectedMonth) {
+    paidStudents.add(name);
+  }
+
+});
 
   displayStudents(students);
 }
