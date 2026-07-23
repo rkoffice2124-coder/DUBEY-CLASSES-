@@ -1,5 +1,12 @@
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+
 import {
   getFirestore,
   collection,
@@ -22,110 +29,113 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 let students = [];
-let paidStudents = new Set();
+
+// Stores latest fee month paid by each student
+let latestFee = {};
 
 onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    window.location.href = "login.html";
-  } else {
-    loadData();
-  }
-});
 
+  if (!user) {
+
+    window.location.href = "login.html";
+
+  } else {
+
+    loadData();
+
+  }
+
+});
 async function loadData() {
 
-  // Load Students
+  // Load all students
   const studentSnapshot = await getDocs(collection(db, "admissions"));
 
   students = [];
 
-  studentSnapshot.forEach((doc) => {
+  studentSnapshot.forEach((docSnap) => {
+
     students.push({
-      id: doc.id,
-      ...doc.data()
+      id: docSnap.id,
+      ...docSnap.data()
     });
+
   });
 
-  // Load Fee Records
-const feeSnapshot = await getDocs(collection(db, "fees"));
+  // Load all fee records
+  const feeSnapshot = await getDocs(collection(db, "fees"));
 
-paidStudents.clear();
+  latestFee = {};
 
-// Expected paid month = Previous month
-const today = new Date();
+  feeSnapshot.forEach((docSnap) => {
 
-today.setMonth(today.getMonth() - 1);
+    const fee = docSnap.data();
 
-const expectedMonth =
-  today.getFullYear() +
-  "-" +
-  String(today.getMonth() + 1).padStart(2, "0");
+    if (!fee.studentName || !fee.month) return;
 
-// Store latest paid month of every student
-const latestPayment = {};
+    const name = fee.studentName.trim().toLowerCase();
 
-feeSnapshot.forEach((doc) => {
+    // Keep only the latest fee month for each student
+    if (!latestFee[name] || fee.month > latestFee[name]) {
+      latestFee[name] = fee.month;
+    }
 
-  const fee = doc.data();
-
-  if (!fee.studentName || !fee.month) return;
-
-  const name = fee.studentName.trim().toLowerCase();
-
-  if (
-    !latestPayment[name] ||
-    fee.month > latestPayment[name]
-  ) {
-    latestPayment[name] = fee.month;
-  }
-
-});
-
-// Mark Paid only if latest paid month
-// is Expected Month or later
-Object.keys(latestPayment).forEach((name) => {
-
-  if (latestPayment[name] >= expectedMonth) {
-    paidStudents.add(name);
-  }
-
-});
+  });
 
   displayStudents(students);
-}
 
+}
 function displayStudents(list) {
 
   const table = document.getElementById("studentTable");
   table.innerHTML = "";
 
+  // Today's date
+  const today = new Date();
+
+  // Previous month is the month that should already be paid
+  let dueYear = today.getFullYear();
+  let dueMonth = today.getMonth(); // 0 = January
+
+  if (dueMonth === 0) {
+    dueMonth = 12;
+    dueYear--;
+  }
+
+  const dueMonthString =
+    dueYear + "-" + String(dueMonth).padStart(2, "0");
+
   list.forEach((s) => {
 
     const studentName = (s.name || "").trim().toLowerCase();
 
-    const isPaid = paidStudents.has(studentName);
+    const lastPaid = latestFee[studentName] || "";
+
+    // Student is paid only if latest paid month is
+    // equal to or after the last completed month.
+    const isPaid = lastPaid >= dueMonthString;
 
     const phone = "91" + (s.mobile || "").replace(/\D/g, "");
 
     const message = encodeURIComponent(
 `Dear Parent,
 
-This is a gentle reminder that the tuition fee of ${s.name} is pending.
+The tuition fee of ${s.name} is pending.
 
-Kindly pay the fee at your earliest convenience.
+Please pay the fee at your earliest convenience.
 
 Thank you.
 
 DUBEY CLASSES
 📞 7503322363`
     );
-
     table.innerHTML += `
       <tr>
 
         <td>
-          <a href="student-profile.html?id=${s.id}" style="text-decoration:none;color:#0d47a1;font-weight:bold;">
-            ${s.name}
+          <a href="student-profile.html?id=${s.id}"
+             style="text-decoration:none;color:#0d47a1;font-weight:bold;">
+             ${s.name}
           </a>
         </td>
 
@@ -140,7 +150,7 @@ DUBEY CLASSES
             isPaid
               ? "—"
               : `<a href="https://wa.me/${phone}?text=${message}" target="_blank">
-                  <button>📱 WhatsApp</button>
+                   <button>📱 WhatsApp</button>
                  </a>`
           }
         </td>
@@ -167,8 +177,11 @@ DUBEY CLASSES
 
       </tr>
     `;
+
   });
+
 }
+// -------------------- SEARCH --------------------
 
 const searchBox = document.getElementById("searchBox");
 
@@ -184,18 +197,29 @@ searchBox.addEventListener("input", () => {
   );
 
   displayStudents(filtered);
+
 });
+
+// -------------------- DELETE STUDENT --------------------
 
 window.deleteStudent = async function(id) {
 
-  if (!confirm("Are you sure you want to delete this student?")) return;
+  const ok = confirm("Are you sure you want to delete this student?");
+
+  if (!ok) return;
 
   try {
+
     await deleteDoc(doc(db, "admissions", id));
+
     alert("✅ Student deleted successfully.");
+
     loadData();
+
   } catch (error) {
-    alert(error.message);
+
+    alert("Error: " + error.message);
+
   }
 
 };
